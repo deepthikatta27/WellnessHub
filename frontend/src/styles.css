@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+.card {
+  box-shadow: 0px 0px 8px 0 rgba(0, 0, 0, 0.2);
+}
+label span {
+  color: red;
+}
+.bodyy {
+  min-height: calc(100vh - 70px);
+  padding-top: 53px;
+}
+/* *{
+  overflow: hidden !important;
+} */

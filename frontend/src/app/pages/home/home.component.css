@@ -1,0 +1,9 @@
+.icon {
+  font-size: 30px;
+}
+.icon:hover {
+  cursor: pointer !important;
+}
+.features {
+  margin-bottom: 30px !important;
+}

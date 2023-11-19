@@ -1,0 +1,74 @@
+<div class="navbox">
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand">Health Care Traking & Recommendation</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div
+        class="collapse navbar-collapse"
+        id="navbarSupportedContent"
+        style="margin-left: 35%"
+      >
+        <ul class="navbar-nav mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" routerLink="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="/recommendations"
+              [ngClass]="{ active: currentUrl === 'recommendations' }"
+              >recommendations</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="/tracking"
+              [ngClass]="{ active: currentUrl === 'tracking' }"
+              >Tracking</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="/charts"
+              [ngClass]="{ active: currentUrl === 'charts' }"
+              >Charts</a
+            >
+          </li>
+          <li class="nav-item" *ngIf="visibleUser === false">
+            <a class="nav-link" routerLink="/login">Login</a>
+          </li>
+          <li class="nav-item dropdown" *ngIf="visibleUser === true">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <i class="fa-solid fa-user"></i>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" (click)="signOut()">SignOut</a></li>
+              <li><hr class="dropdown-divider" /></li>
+              <li>
+                <a class="dropdown-item" routerLink="/profile">Profile</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>

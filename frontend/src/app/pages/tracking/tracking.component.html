@@ -1,0 +1,183 @@
+<app-header></app-header>
+<div class="bodyy">
+  <div class="card mt-2">
+    <div class="card-body">
+      <div class="h6">Exsercise Traking :</div>
+      <div class="row m-0 mt-4">
+        <div class="col-4">
+          <div class="h6">Select Today Excersise :</div>
+          <form [formGroup]="addForm">
+            <div class="row m-0">
+              <div class="col-12">
+                <label for="date" class="form-label">Date <span>*</span></label>
+                <input
+                  type="date"
+                  class="form-control"
+                  formControlName="createdAt"
+                />
+              </div>
+              <div class="col-12">
+                <label for="excercise" class="form-label"
+                  >Select excersice</label
+                >
+                <select
+                  class="form-select"
+                  aria-label="Default select example"
+                  formControlName="exercise_id"
+                >
+                  <option selected disabled>Select</option>
+                  <option
+                    *ngFor="let i of saved"
+                    [value]="i.excercise.exerciseName"
+                  >
+                    {{ i.excercise.exerciseName }}
+                  </option>
+                </select>
+              </div>
+              <div class="col-12">
+                <label for="min" class="form-label">Minitues</label>
+                <input
+                  formControlName="exercise_period"
+                  type="number"
+                  class="form-control"
+                  id="min"
+                  placeholder="Minitues"
+                />
+              </div>
+              <div class="col-12 text-center">
+                <button
+                  class="btn btn-primary mt-3"
+                  type="submit"
+                  (click)="submit()"
+                >
+                  submit
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-8">
+          <div class="row m-0">
+            <div class="col-8">
+              <div class="h6">History :</div>
+            </div>
+            <div class="col-4">
+              <input
+                type="search"
+                class="form-control"
+                placeholder="Search"
+                [(ngModel)]="searchText1"
+              />
+            </div>
+          </div>
+          <table class="table table-bordered mt-3 text-center">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Excersice</th>
+                <th>Duration</th>
+                <th>Calories Burned</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let i of excersiceTrackings | search : searchText1">
+                <td>{{ i.createdAt }}</td>
+                <td>{{ i.exercise_id }}</td>
+                <td>{{ i.exercise_period }}</td>
+                <td>{{ i.totalLooseCalories }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card mt-4">
+    <div class="card-body">
+      <div class="h6">Food Traking :</div>
+      <div class="row m-0 mt-4">
+        <div class="col-4">
+          <div class="h6">Select Today Food :</div>
+          <form [formGroup]="foodForm">
+            <div class="row m-0">
+              <div class="col-12">
+                <label for="date" class="form-label">Date <span>*</span></label>
+                <input
+                  type="date"
+                  class="form-control"
+                  formControlName="createdAt"
+                />
+              </div>
+              <div class="col-12">
+                <label for="excercise" class="form-label">Select Food</label>
+                <select
+                  class="form-select"
+                  aria-label="Default select example"
+                  formControlName="foodRecommendation_id"
+                >
+                  <option selected disabled>Select</option>
+                  <option *ngFor="let i of savedFoods" [value]="i.food.name">
+                    {{ i.food.name }}
+                  </option>
+                </select>
+              </div>
+              <div class="col-12">
+                <label for="qty" class="form-label">qty</label>
+                <input
+                  formControlName="quantityInTake"
+                  type="number"
+                  class="form-control"
+                  id="qty"
+                  placeholder="qty"
+                />
+              </div>
+              <div class="col-12 text-center">
+                <button
+                  class="btn btn-primary mt-3"
+                  type="submit"
+                  (click)="submit1()"
+                >
+                  submit
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-8">
+          <div class="row m-0">
+            <div class="col-8">
+              <div class="h6">History :</div>
+            </div>
+            <div class="col-4">
+              <input
+                type="search"
+                class="form-control"
+                placeholder="Search"
+                [(ngModel)]="searchText1"
+              />
+            </div>
+          </div>
+          <table class="table table-bordered mt-3 text-center">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Food</th>
+                <th>qty</th>
+                <th>Calories Gained</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let i of foodTrackings | search : searchText2">
+                <td>{{ i.createdAt }}</td>
+                <td>{{ i.foodRecommendation_id }}</td>
+                <td>{{ i.quantityInTake }}</td>
+                <td>{{ i.totalGainedCalories }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

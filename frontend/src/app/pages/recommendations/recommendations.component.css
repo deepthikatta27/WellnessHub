@@ -1,0 +1,10 @@
+.icon {
+  font-size: larger !important;
+}
+.icon:hover {
+  color: red !important;
+}
+.savedicon {
+  color: red !important;
+  font-size: larger !important;
+}

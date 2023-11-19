@@ -1,0 +1,112 @@
+<app-header></app-header>
+<div class="bodyy">
+  <div class="card mt-4">
+    <div class="card-body">
+      <div class="h6 text-center">Profile</div>
+      <div class="row m-0 mt-4">
+        <div class="col-lg-4 col-md-4 col-sm-6 col-12">
+          <img
+            [src]="userData.image"
+            alt="pic"
+            style="
+              border-radius: 45%;
+              height: 200px;
+              width: 200px;
+              object-fit: cover;
+            "
+          />
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-6 col-12">
+          <form [formGroup]="editForm">
+            <div class="row m-0">
+              <div class="col-12">
+                <label for="name" class="form-label">Name</label>
+                <input
+                  [ngClass]="{
+                    'is-invalid': submitted && editForm.get('name')?.errors
+                  }"
+                  type="text"
+                  class="form-control"
+                  maxlength="30"
+                  formControlName="name"
+                />
+              </div>
+              <div class="col-6">
+                <label for="email" class="form-label">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  maxlength="50"
+                  formControlName="email"
+                  [ngClass]="{
+                    'is-invalid': submitted && editForm.get('email')?.errors
+                  }"
+                />
+              </div>
+              <div class="col-6">
+                <label for="height" class="form-label">height</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  formControlName="height"
+                  [ngClass]="{
+                    'is-invalid': submitted && editForm.get('height')?.errors
+                  }"
+                />
+              </div>
+              <div class="col-6">
+                <label for="weight" class="form-label">weight</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  formControlName="weight"
+                  [ngClass]="{
+                    'is-invalid': submitted && editForm.get('weight')?.errors
+                  }"
+                />
+              </div>
+              <div class="col-6">
+                <label for="age" class="form-label">age</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  formControlName="age"
+                  [ngClass]="{
+                    'is-invalid': submitted && editForm.get('age')?.errors
+                  }"
+                />
+              </div>
+              <div class="col-6">
+                <label for="password" class="form-label">Password</label>
+                <input
+                  [ngClass]="{
+                    'is-invalid': submitted && editForm.get('password')?.errors
+                  }"
+                  type="password"
+                  class="form-control"
+                  formControlName="password"
+                />
+              </div>
+              <!-- <div class="col-6">
+                <label for="img" class="form-label">Image</label>
+                <input
+                  formControlName="image"
+                  type="file"
+                  (change)="uploadFile($event)"
+                  class="form-control"
+                  accept="image/png, image/gif, image/jpeg"
+                />
+              </div> -->
+              <div class="col-12 text-center">
+                <button class="btn btn-primary mt-4" (click)="submit()">
+                  Update Profile
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

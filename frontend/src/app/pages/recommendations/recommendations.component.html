@@ -1,0 +1,172 @@
+<app-header></app-header>
+<div class="bodyy">
+  <div class="card mt-5">
+    <div class="card-body">
+      <div class="h5">Filter Recommendations By Height / weight</div>
+      <form [formGroup]="filterForm">
+        <div class="row m-0 align-items-end">
+          <div class="col-4">
+            <label for="height" class="form-label">Height <span>*</span></label>
+            <input
+              type="number"
+              class="form-control"
+              formControlName="height"
+            />
+          </div>
+          <div class="col-4">
+            <label for="height" class="form-label">Height <span>*</span></label>
+            <input
+              type="number"
+              class="form-control"
+              formControlName="weight"
+            />
+          </div>
+          <div class="col-4">
+            <button class="btn btn-primary" type="submit" (click)="filter()">
+              Search
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <section class="mt-5">
+    <div class="h5">Excersices Recommended for You :</div>
+    <div>
+      <ngx-slick-carousel
+        class="carousel"
+        #slickModal="slick-carousel"
+        [config]="slideConfig"
+        (init)="slickInit($event)"
+        (breakpoint)="breakpoint($event)"
+        (afterChange)="afterChange($event)"
+        (beforeChange)="beforeChange($event)"
+      >
+        <div ngxSlickItem class="slide" *ngFor="let i of excersices">
+          <div class="card m-1">
+            <div class="card-body">
+              <div class="row m-0 justify-content-end">
+                <div class="col-2">
+                  <i
+                    class="fa-solid fa-heart icon"
+                    (click)="saveExcersiceRcomendation(i._id)"
+                  ></i>
+                </div>
+              </div>
+              <img [src]="i.image" alt="" width="100%" height="200px" />
+              <div class="h6 text-center">{{ i.exerciseName }}</div>
+              <p class="text-center">
+                {{ "burn " + i.noOfCalories + " calories" }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </ngx-slick-carousel>
+    </div>
+  </section>
+  <section class="mt-5">
+    <div class="h5">Foods Recommended for You :</div>
+    <div>
+      <ngx-slick-carousel
+        class="carousel"
+        #slickModal="slick-carousel"
+        [config]="slideConfig_two"
+        (init)="slickInit($event)"
+        (breakpoint)="breakpoint($event)"
+        (afterChange)="afterChange($event)"
+        (beforeChange)="beforeChange($event)"
+      >
+        <div ngxSlickItem class="slide" *ngFor="let i of foods">
+          <div class="card m-1">
+            <div class="card-body">
+              <div class="row m-0 justify-content-end">
+                <div class="col-2">
+                  <i
+                    class="fa-solid fa-heart icon"
+                    (click)="saveFoodRcomendation(i._id)"
+                  ></i>
+                </div>
+              </div>
+              <img [src]="i.image" alt="" width="100%" height="200px" />
+              <div class="h6 text-center">{{ i.name }}</div>
+              <p class="text-center">{{ "Category : " + i.categories }}</p>
+              <p class="text-center">
+                {{ i.noOfCalories + " Calories" }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </ngx-slick-carousel>
+    </div>
+  </section>
+  <section class="mt-5">
+    <div class="h5">Your Saved Excersice Recommendations :</div>
+    <div>
+      <ngx-slick-carousel
+        class="carousel"
+        #slickModal="slick-carousel"
+        [config]="slideConfig_three"
+        (init)="slickInit($event)"
+        (breakpoint)="breakpoint($event)"
+        (afterChange)="afterChange($event)"
+        (beforeChange)="beforeChange($event)"
+      >
+        <div ngxSlickItem class="slide" *ngFor="let i of saved">
+          <div class="card m-1">
+            <div class="card-body">
+              <div class="row m-0 justify-content-end">
+                <div class="col-2">
+                  <i
+                    class="fa-solid fa-heart savedicon"
+                    (click)="removeExcersiceRecommendation(i._id)"
+                  ></i>
+                </div>
+              </div>
+              <img
+                [src]="i.excercise.exerciseImages"
+                alt=""
+                width="100%"
+                height="200px"
+              />
+              <div class="h6 text-center">{{ i.excercise.exerciseName }}</div>
+            </div>
+          </div>
+        </div>
+      </ngx-slick-carousel>
+    </div>
+  </section>
+  <section class="mt-5">
+    <div class="h5">Your Saved Food Recommendations :</div>
+    <div>
+      <ngx-slick-carousel
+        class="carousel"
+        #slickModal="slick-carousel"
+        [config]="slideConfig_three"
+        (init)="slickInit($event)"
+        (breakpoint)="breakpoint($event)"
+        (afterChange)="afterChange($event)"
+        (beforeChange)="beforeChange($event)"
+      >
+        <div ngxSlickItem class="slide" *ngFor="let i of savedFoods">
+          <div class="card m-1">
+            <div class="card-body">
+              <div class="row m-0 justify-content-end">
+                <div class="col-2">
+                  <i
+                    class="fa-solid fa-heart savedicon"
+                    (click)="removeFoodRecommendation(i._id)"
+                  ></i>
+                </div>
+              </div>
+              <img [src]="i.food.image" alt="" width="100%" height="200px" />
+              <div class="h6 text-center">{{ i.food.name }}</div>
+              <p class="text-center">{{ i.food.noOfCalories + " Calories" }}</p>
+            </div>
+          </div>
+        </div>
+      </ngx-slick-carousel>
+    </div>
+  </section>
+</div>
+<app-footer></app-footer>
